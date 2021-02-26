@@ -1,0 +1,103 @@
+<template>
+  <div>
+    <div class="before-option-wrapper"
+      v-show="isShowField">
+      <van-field
+        v-model="text"
+        rows="10"
+        autosize
+        label=""
+        type="textarea"
+        maxlength="200"
+        placeholder="请输入文本或网址"
+      />
+      <van-button type="primary"
+        @click="makeQrcode">
+        生成二维码
+      </van-button>
+      <van-button type="primary"
+        @click="downloadQrcode">
+        下载二维码
+      </van-button>
+    </div>
+    <div ref="qrcode" v-show="!isShowField"></div>
+    <div class="after-options-wrapper"
+      v-if="isShowMakeAginBtn">
+      <van-button type="primary"
+        @click="makeQrcodeAgain">
+        再建一个
+      </van-button>
+      <van-button type="primary"
+        @click="downloadQrcode">
+        下载二维码
+      </van-button>
+    </div>
+    <div ref="qrcodeList"></div>
+  </div>
+</template>
+<script>
+import QRCode from 'qrcodejs2';
+import utils from './utils'
+export default {
+  data () {
+    return {
+      qrcode: undefined,
+      text: '',
+      isShowField: true,
+      isShowMakeAginBtn: false,
+    }
+  },
+  props: {
+  },
+  methods: {
+    makeQrcode () {
+      if (!this.text) {
+        alert('请输入文本或网址')
+        return
+      }
+
+      this.qrcode = new QRCode(this.$refs.qrcode, {
+        width: 200,
+        height: 200,
+        text: this.text
+      });
+      this.isShowField = false;
+      this.isShowMakeAginBtn = true
+
+      const qrcode = this.$refs.qrcode,
+        qrcodeChildLen = qrcode.childNodes.length
+      if (qrcodeChildLen == 4){
+        const canvas = this.child(qrcode, 0),
+          img = this.child(qrcode, 1);
+        this.$refs.qrcodeList.appendChild(img);
+      }
+    },
+    child (parent, i) {
+      return parent.childNodes[i]
+    },
+    downloadQrcode () {
+      const qrcode = this.$refs.qrcode,
+        canvas = this.child(qrcode, 0),
+        img = this.child(qrcode, 1);
+      utils.qrodeUtil.drawImg(canvas, img);
+      utils.qrodeUtil.download(canvas, 'png');
+    },
+    makeQrcodeAgain () {
+      this.isShowField = true
+      this.isShowMakeAginBtn = false
+    }
+  },
+  computed: {
+  },
+  components: {
+  },
+  created() {
+  },
+  mounted() {
+  },
+  destroyed() {
+  }
+};
+</script>
+<style lang="scss" scoped>
+</style>
