@@ -12,6 +12,14 @@
     <van-button @click="jsonFormatFn">
       格式化
     </van-button>
+    <!-- <van-field
+      v-model="formatJson"
+      rows="10"
+      autosize
+      label=""
+      type="textarea"
+      maxlength="200"
+    /> -->
   </div>
 </template>
 <script>
@@ -20,20 +28,19 @@ export default {
   data () {
     return {
       json: '',
-      formatJson: {}
+      formatJson: ''
     }
   },
   props: {
   },
   methods: {
     jsonFormatFn () {
-      const json = JSON.parse(this.json)
-      // this.formatJson = jsonFormat(json, {
-      //   type: 'space',
-      //   size: 2
-      // })
+      this.formatJson = jsonFormat(this.json, {
+        type: 'space',
+        size: 2
+      })
 
-      console.log('>>>', json, this.json);
+      console.log('>>>', this.json, this.formatJson);
     }
   },
   computed: {
