@@ -6,22 +6,30 @@
       <div class="item" @click="goGithub1s" v-show="isShowGitHubClone">go github1s</div>
     </div>
     <!-- 公共部分 点击生成二维码 -->
-    <div class="item" @click="getQrCode" v-show="isShowQrcode">生成二维码</div>
+    <div class="item" @click="qrCode" v-show="isShowQrcode">
+      <span>二维码</span>
+      <span class="qrcode-option">{{isQrcodeShow ? '收起' : '展开' }}</span>
+    </div>
+    <div ref="qrcode" v-show="isQrcodeShow"></div>
+    <div class="item" @click="getQrCode" v-show="isShowQrcode">去生成二维码</div>
     <div class="item" @click="markdown" v-show="isShowMarkdown">Markdown工具</div>
     <div class="item setting">
       <span @click="github">github</span>
-      <span @click="setting">设置</span>
+      <span @click="setting" class="setting-option">设置</span>
     </div>
   </div>
 </template>
 <script>
+import QRCode from 'qrcodejs2';
 import { Toast } from 'vant';
 export default {
   data () {
     return {
       currentPageUrl: '',
       isShowQrcode: false,
-      isShowMarkdown: false
+      isShowMarkdown: false,
+      isGenerQrcode: false,
+      isQrcodeShow: false
     }
   },
   props: {
@@ -32,6 +40,16 @@ export default {
     },
     github () {
       chrome.tabs.create({ url: "https://github.com/Zenquan/browserHelper" });
+    },
+    qrCode () {
+      !this.isGenerQrcode && new QRCode(this.$refs.qrcode, {
+        width: 200,
+        height: 200,
+        text: this.currentPageUrl
+      });
+
+      this.isGenerQrcode = true
+      this.isQrcodeShow = !this.isQrcodeShow
     },
     getQrCode () {
       chrome.tabs.create({ url: "/qrcode/qrcode.html" });
@@ -98,10 +116,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .popup {
-  min-width: 120px;
+  min-width: 200px;
   min-height: 25px;
   .item {
-    padding: 3px 5px 3px 5px;
+    padding: 3px 15px;
     cursor: pointer;
     color: #555;
     -webkit-transition: all .4s ease;
@@ -109,13 +127,19 @@ export default {
     display: block;
     height: 20px;
     line-height: 20px;
-    width: 116px;
     border-bottom: 1px dashed #e5e5e5;
     overflow: hidden;
+    .qrcode-option {
+      border: 1px dashed #ed3790;
+      margin-left: 100px;
+    }
   }
   .setting {
     display: flex;
     justify-content: space-around;
+    .setting-option {
+      border: 1px dashed #ed3790;
+    }
   }
 }
 </style>
