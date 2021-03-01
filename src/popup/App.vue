@@ -8,7 +8,8 @@
     <!-- 公共部分 点击生成二维码 -->
     <div class="item" @click="getQrCode" v-show="isShowQrcode">生成二维码</div>
     <div class="item" @click="markdown" v-show="isShowMarkdown">Markdown工具</div>
-    <div class="item">
+    <div class="item setting">
+      <span @click="github">github</span>
       <span @click="setting">设置</span>
     </div>
   </div>
@@ -28,6 +29,9 @@ export default {
   methods: {
     setting() {
       chrome.tabs.create({ url: "/options/options.html" });
+    },
+    github () {
+      chrome.tabs.create({ url: "https://github.com/Zenquan/browserHelper" });
     },
     getQrCode () {
       chrome.tabs.create({ url: "/qrcode/qrcode.html" });
@@ -108,6 +112,10 @@ export default {
     width: 116px;
     border-bottom: 1px dashed #e5e5e5;
     overflow: hidden;
+  }
+  .setting {
+    display: flex;
+    justify-content: space-around;
   }
 }
 </style>
