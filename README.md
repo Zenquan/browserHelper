@@ -1,38 +1,13 @@
 # browserHelper
 ## 背景
-
+## 下载地址
+[下载地址](https://github.com/Zenquan/browserHelper/releases/tag/v1.0.0)
 ## v1.0
 ### 公共部分
 - [x] 生成和下载二维码
 - [x] 独立二维码生成页面（对标草料二维码）
 - [x] 选中文本右击进行百度（因为某些原因导致我们很难谷歌搜索东西，所以就是要百度或者必应）
 - [x] Markdown工具 （Markdown编辑器，支持在线编写、预览、下载等，并支持HTML内容到Markdown格式的转换）
-
-### 前端工作辅助部分
-
-- [ ] 最近在使用styled-components，发现写起来虽然有点爽，只是都要去export 定义很多个，实在麻烦，所以
-造东西的时候有到了
-
-	```js
-	import {Page, Text, Line} from './style'
-	```
-
-	=> 
-
-	```js
-	import styled from 'styled-components'
-	export const Page = styled.div`
-	`
-	export const Text = styled.div`
-	`
-	export const Line = styled.div`
-	`
-
-	<Page></Page>
-	<Text></Text>
-	<Line></Line>
-	```
-
 ### github相关部分
 #### git clone (github)
 ##### 背景
@@ -67,7 +42,6 @@ git clone https/github.com.cnpmjs.org.git
 	url = https://github.com.cnpmjs.org/Zenquan/githubHelper.git
 ```
 url为`https://github.com.cnpmjs.org`的服务链接，并不是`https://github.com`， 所以需要`git push`时，重新登录github账号，或者会push失败，所以解决方案是把以上`https://github.com.cnpmjs.org`改为`https://github.com`。
-
 ## v2.0
 - [ ] 点击历史生成二维码可用
 - [ ] Markdown工具支持皮肤更换
