@@ -18,7 +18,7 @@ const config = {
     'popup/popup': './popup/popup.js',
     'options/options': './options/options.js',
     'qrcode/qrcode': './qrcode/qrcode.js',
-    'json-format/json-format': './json-format/json-format'
+    "markdown/markdown": './markdown/markdown.js'
   },
   output: {
     path: __dirname + '/dist',
@@ -100,8 +100,8 @@ const config = {
         transform: transformHtml
       },
       {
-        from: 'json-format/json-format.html',
-        to: 'json-format/json-format.html',
+        from: 'markdown/markdown.html',
+        to: 'markdown/markdown.html',
         transform: transformHtml
       },
       {

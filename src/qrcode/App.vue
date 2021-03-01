@@ -11,11 +11,11 @@
         maxlength="200"
         placeholder="请输入文本或网址"
       />
-      <van-button type="primary"
+      <van-button type="info"
         @click="makeQrcode">
         生成二维码
       </van-button>
-      <van-button type="primary"
+      <van-button type="info"
         @click="downloadQrcode">
         下载二维码
       </van-button>
@@ -23,11 +23,11 @@
     <div ref="qrcode" v-show="!isShowField"></div>
     <div class="after-options-wrapper"
       v-if="isShowMakeAginBtn">
-      <van-button type="primary"
+      <van-button type="info"
         @click="makeQrcodeAgain">
         再建一个
       </van-button>
-      <van-button type="primary"
+      <van-button type="info"
         @click="downloadQrcode">
         下载二维码
       </van-button>
@@ -37,7 +37,8 @@
 </template>
 <script>
 import QRCode from 'qrcodejs2';
-import utils from './utils'
+import { Toast } from 'vant';
+import utils from './utils';
 export default {
   data () {
     return {
@@ -52,7 +53,7 @@ export default {
   methods: {
     makeQrcode () {
       if (!this.text) {
-        alert('请输入文本或网址')
+        Toast('请输入文本或网址')
         return
       }
 
@@ -69,7 +70,9 @@ export default {
       if (qrcodeChildLen == 4){
         const canvas = this.child(qrcode, 0),
           img = this.child(qrcode, 1);
-        this.$refs.qrcodeList.appendChild(img);
+          qrcode.removeChild(canvas)
+          qrcode.removeChild(img);
+        // this.$refs.qrcodeList.appendChild(img);
       }
     },
     child (parent, i) {
@@ -90,6 +93,7 @@ export default {
   computed: {
   },
   components: {
+    Toast
   },
   created() {
   },

@@ -6,6 +6,8 @@ import {
   Button
 } from 'vant'
 
+import 'highlight.js/styles/atom-one-dark.css'
+
 Vue.use(Field);
 Vue.use(Button);
 

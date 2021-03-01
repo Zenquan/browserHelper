@@ -1,13 +1,15 @@
 import Vue from "vue";
 import App from "./App";
 import axios from "axios";
+import { Checkbox, CheckboxGroup } from 'vant';
+
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
 
 import VueClipboard from "vue-clipboard2";
 Vue.use(VueClipboard)
 
 Vue.prototype.$axios = axios;
-Vue.prototype.$message = Message;
-Vue.prototype.$ELEMENT = { size: 'mini' };
 
 /* eslint-disable no-new */
 new Vue({
