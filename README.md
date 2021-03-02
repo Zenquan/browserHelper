@@ -46,6 +46,7 @@ url为`https://github.com.cnpmjs.org`的服务链接，并不是`https://github.
 - [ ] 点击历史生成二维码可用
 - [ ] Markdown工具支持皮肤更换
 - [ ] 手机端markdown
+- [ ] diagrams图片的管理
 
 ## v3.0
 - [ ] 所有资讯链接榜整合（微博热榜、知乎热榜、技术公众号推送）
