@@ -1,6 +1,13 @@
 <template>
   <div class="markdown">
-    <textarea v-model="text" class="text"></textarea>
+    <van-field
+      class="text"
+      v-model="text"
+      autosize
+      type="textarea"
+      autofocus
+    />
+    <!-- <textarea v-model="text" class="text"></textarea> -->
     <div v-html="mdResult" class="render-md"></div>
     <van-button 
       type="info"
@@ -97,8 +104,8 @@ body {
   .download-btn {
     position: fixed;
     bottom: 0;
-    left: 50%;
-    transform: translateX(-115%);
+    right: 0;
+    /* transform: translateX(-115%); */
   }
 }
 </style>
