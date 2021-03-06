@@ -3,10 +3,12 @@ import App from "./App";
 
 import {
   Field,
-  Button
+  Button 
 } from 'vant'
 
 import 'highlight.js/styles/atom-one-dark.css'
+
+import '@vant/touch-emulator';
 
 Vue.use(Field);
 Vue.use(Button);

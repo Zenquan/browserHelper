@@ -6,6 +6,8 @@
       autosize
       type="textarea"
       autofocus
+      clearable
+      @clear="clear"
     />
     <!-- <textarea v-model="text" class="text"></textarea> -->
     <div v-html="mdResult" class="render-md"></div>
@@ -59,6 +61,9 @@ export default {
       let blob = new Blob([this.text], {type : 'application/json'});
       let filename = new Date().toLocaleDateString() + '.md';
       saveAs(blob, filename);
+    },
+    clear (e) {
+      console.log('>>>', e);
     }
   },
   computed: {
