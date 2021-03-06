@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="qrcode">
     <div class="before-option-wrapper"
       v-show="isShowField">
       <van-field
@@ -11,16 +11,21 @@
         maxlength="200"
         placeholder="请输入文本或网址"
       />
-      <van-button type="info"
-        @click="makeQrcode">
-        生成二维码
-      </van-button>
-      <van-button type="info"
-        @click="downloadQrcode">
-        下载二维码
-      </van-button>
+      <div class="after-options-wrapper">
+        <van-button type="info"
+          @click="makeQrcode">
+          生成二维码
+        </van-button>
+        <van-button type="info"
+          @click="downloadQrcode">
+          下载二维码
+        </van-button>
+      </div>
     </div>
-    <div ref="qrcode" v-show="!isShowField"></div>
+    <div ref="qrcode" 
+      v-show="!isShowField"
+      class="qrcode-wrapper"  
+    ></div>
     <div class="after-options-wrapper"
       v-if="isShowMakeAginBtn">
       <van-button type="info"
@@ -32,7 +37,7 @@
         下载二维码
       </van-button>
     </div>
-    <div ref="qrcodeList"></div>
+    <div ref="qrcodeList" class="qrcode-list"></div>
   </div>
 </template>
 <script>
@@ -42,7 +47,6 @@ import utils from './utils';
 export default {
   data () {
     return {
-      qrcode: undefined,
       text: '',
       isShowField: true,
       isShowMakeAginBtn: false,
@@ -57,7 +61,7 @@ export default {
         return
       }
 
-      this.qrcode = new QRCode(this.$refs.qrcode, {
+      new QRCode(this.$refs.qrcode, {
         width: 200,
         height: 200,
         text: this.text
@@ -72,7 +76,7 @@ export default {
           img = this.child(qrcode, 1);
           qrcode.removeChild(canvas)
           qrcode.removeChild(img);
-        // this.$refs.qrcodeList.appendChild(img);
+        this.$refs.qrcodeList.appendChild(img);
       }
     },
     child (parent, i) {
@@ -104,4 +108,23 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+$padding: 12px;
+
+.qrcode {
+  .qrcode-wrapper {
+    /deep/img {
+      padding: $padding;
+    }
+  }
+  .after-options-wrapper {
+    padding: $padding;
+  }
+  .qrcode-list {
+    padding: $padding;
+    /deep/img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
 </style>
