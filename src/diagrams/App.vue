@@ -47,7 +47,7 @@ import { Octokit } from '@octokit/core';
 import { Mime } from '@jomsou/utils';
 import { ImagePreview, Toast } from 'vant';
 const mime = new Mime();
-const octokit = new Octokit({ auth: `0d05ef13e7b55e951cd9dcb95fa35ba2bbc925c6`});
+const octokit = new Octokit({ auth: ``});
 import CryptoJS  from 'crypto-js'
 import { Base64, encode, decode } from 'js-base64';
 export default {
