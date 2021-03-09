@@ -18,7 +18,7 @@ var BgPageInstance = (function () {
 		contextMenus('使用必应搜索：%s', 'https://www.bing.com/search?q=');
 		// 使用百度搜索
 		contextMenus('使用百度搜索：%s', 'https://www.baidu.com/s?ie=utf-8&wd=');
-	}
+	};
 
 	return {
 		init

@@ -9,6 +9,8 @@ Vue.use(CheckboxGroup);
 import VueClipboard from "vue-clipboard2";
 Vue.use(VueClipboard)
 
+import '../styles/index.scss';
+
 Vue.prototype.$axios = axios;
 
 /* eslint-disable no-new */

@@ -18,7 +18,8 @@ const config = {
     'popup/popup': './popup/popup.js',
     'options/options': './options/options.js',
     'qrcode/qrcode': './qrcode/qrcode.js',
-    "markdown/markdown": './markdown/markdown.js'
+    "markdown/markdown": './markdown/markdown.js',
+    'diagrams/diagrams': './diagrams/diagrams.js'
   },
   output: {
     path: __dirname + '/dist',
@@ -101,7 +102,12 @@ const config = {
       },
       {
         from: 'markdown/markdown.html',
-        to: 'markdown/markdown.html',
+        to: 'markdown/index.html',
+        transform: transformHtml
+      },
+      {
+        from: 'diagrams/diagrams.html',
+        to: 'diagrams/diagrams.html',
         transform: transformHtml
       },
       {

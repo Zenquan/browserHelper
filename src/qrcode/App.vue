@@ -10,6 +10,7 @@
         type="textarea"
         maxlength="200"
         placeholder="请输入文本或网址"
+        clearable
       />
       <div class="after-options-wrapper">
         <van-button type="info"
@@ -37,7 +38,10 @@
         下载二维码
       </van-button>
     </div>
-    <div ref="qrcodeList" class="qrcode-list"></div>
+    <div ref="qrcodeList" class="qrcode-list"
+      v-show="qrcodeList.length">
+      <h2>历史生成二维码</h2>
+    </div>
   </div>
 </template>
 <script>
@@ -50,6 +54,8 @@ export default {
       text: '',
       isShowField: true,
       isShowMakeAginBtn: false,
+      qrcodeList: [],
+      qrcodeIndex: 0
     }
   },
   props: {
@@ -60,6 +66,9 @@ export default {
         Toast('请输入文本或网址')
         return
       }
+
+      this.qrcodeList.push(this.text);
+      console.log('>>>', this.qrcodeList, this.qrcodeIndex);
 
       new QRCode(this.$refs.qrcode, {
         width: 200,
@@ -76,7 +85,19 @@ export default {
           img = this.child(qrcode, 1);
           qrcode.removeChild(canvas)
           qrcode.removeChild(img);
-        this.$refs.qrcodeList.appendChild(img);
+        let divWrapper = document.createElement('div'),
+          pWrapper = document.createElement('p'); 
+        pWrapper.innerHTML = this.qrcodeList[this.qrcodeIndex]
+        divWrapper.className = 'div-wrapper'
+        pWrapper.className = 'p-wrapper'
+        divWrapper.appendChild(img)
+        divWrapper.appendChild(pWrapper)
+        this.$refs.qrcodeList.appendChild(divWrapper)
+        this.qrcodeIndex += 1;
+        // divWrapper.addEventListener('click', () => {
+        //   divWrapper.childNodes[0].style.width = '224px';
+        //   divWrapper.childNodes[0].style.height = '224px';
+        // })
       }
     },
     child (parent, i) {
@@ -124,6 +145,14 @@ $padding: 12px;
     /deep/img {
       width: 50px;
       height: 50px;
+      margin: 20px;
+    }
+    /deep/.div-wrapper {
+      display: flex;
+      align-items: center;
+      .p-wrapper {
+
+      }
     }
   }
 }

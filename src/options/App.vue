@@ -11,14 +11,22 @@
       class="item"
       >Markdown工具
     </van-checkbox>
+    <van-checkbox v-model="isShowDiagrams"
+      @change="showDiagrams"
+      class="item"
+      >diagrams工具
+    </van-checkbox>
   </div>
 </template>
 <script>
+import { Storage } from '@jomsou/utils';
+const storage = new Storage();
 export default {
   data () {
     return {
       isShowQrcode: true,
       isShowMarkdown: true,
+      isShowDiagrams: false
     }
   },
   props: {
@@ -29,14 +37,21 @@ export default {
       chrome.storage.sync.set({
         isShowQrcode: this.isShowQrcode
       })
-      localStorage.setItem('isShowQrcode', this.isShowQrcode)
+      storage.setLocal('isShowQrcode', this.isShowQrcode)
     },
     showMarkdown() {
       console.log('>>>', typeof this.isShowMarkdown);
       chrome.storage.sync.set({
         isShowMarkdown: this.isShowMarkdown
       })
-      localStorage.setItem('isShowMarkdown', this.isShowMarkdown)
+      storage.setLocal('isShowMarkdown', this.isShowMarkdown)
+    },
+    showDiagrams() {
+      console.log('>>>', typeof this.isShowDiagrams);
+      chrome.storage.sync.set({
+        isShowDiagrams: this.isShowDiagrams
+      })
+      storage.setLocal('isShowDiagrams', this.isShowDiagrams)
     },
   },
   computed: {
@@ -46,8 +61,8 @@ export default {
   created() {
   },
   mounted() {
-    this.isShowQrcode = JSON.parse(localStorage.getItem('isShowQrcode'));
-    this.isShowMarkdown = JSON.parse(localStorage.getItem('isShowMarkdown'));
+    this.isShowQrcode = storage.getLocal('isShowQrcode');
+    this.isShowMarkdown = storage.getLocal('isShowMarkdown');
   },
   destroyed() {
   }

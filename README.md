@@ -43,9 +43,9 @@ git clone https/github.com.cnpmjs.org.git
 ```
 url为`https://github.com.cnpmjs.org`的服务链接，并不是`https://github.com`， 所以需要`git push`时，重新登录github账号，或者会push失败，所以解决方案是把以上`https://github.com.cnpmjs.org`改为`https://github.com`。
 ## v2.0
-- [ ] 点击历史生成二维码可用
+- [x] 历史生成二维码可用
 - [ ] Markdown工具支持皮肤更换
-- [ ] 手机端markdown
+- [x] 手机端markdown, 本地数据缓存
 - [ ] diagrams图片的管理
 
 ## v3.0

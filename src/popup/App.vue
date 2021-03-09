@@ -13,7 +13,8 @@
     <div ref="qrcode" v-show="isQrcodeShow"></div>
     <div class="item" @click="getQrCode" v-show="isShowQrcode">去生成二维码</div>
     <div class="item" @click="markdown" v-show="isShowMarkdown">Markdown工具</div>
-    <div class="item setting">
+    <div class="item" @click="diagrams" v-show="isShowDiagrams">diagrams工具</div>
+    <div class="item">
       <span @click="github">github</span>
       <span @click="setting" class="setting-option">设置</span>
     </div>
@@ -29,7 +30,8 @@ export default {
       isShowQrcode: false,
       isShowMarkdown: false,
       isGenerQrcode: false,
-      isQrcodeShow: false
+      isQrcodeShow: false,
+      isShowDiagrams: false
     }
   },
   props: {
@@ -76,6 +78,9 @@ export default {
     markdown () {
       chrome.tabs.create({ url: "/markdown/markdown.html" });
     },
+    diagrams () {
+      chrome.tabs.create({ url: "/diagrams/diagrams.html" });
+    },
     init () {
       chrome.tabs.getSelected(null, (tab) => {
         console.log('>>>', tab.url);
@@ -84,11 +89,13 @@ export default {
 
       chrome.storage.sync.get([
         'isShowQrcode',
-        'isShowMarkdown'
+        'isShowMarkdown',
+        'isShowDiagrams'
       ], res => {
         console.log('res>>>', res);
         this.isShowQrcode = res.isShowQrcode;
         this.isShowMarkdown = res.isShowMarkdown;
+        this.isShowDiagrams = res.isShowDiagrams;
       })
     }
   },
@@ -129,16 +136,9 @@ export default {
     line-height: 20px;
     border-bottom: 1px dashed #e5e5e5;
     overflow: hidden;
-    .qrcode-option {
+    .setting-option, .qrcode-option {
       border: 1px dashed #ed3790;
       margin-left: 100px;
-    }
-  }
-  .setting {
-    display: flex;
-    justify-content: space-around;
-    .setting-option {
-      border: 1px dashed #ed3790;
     }
   }
 }
