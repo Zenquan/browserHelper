@@ -46,7 +46,7 @@ url为`https://github.com.cnpmjs.org`的服务链接，并不是`https://github.
 - [x] 历史生成二维码可用
 - [ ] Markdown工具支持皮肤更换
 - [x] 手机端markdown, 本地数据缓存
-- [ ] diagrams图片的管理
+- [x] diagrams图片的管理
 
 ## v3.0
 - [ ] 所有资讯链接榜整合（微博热榜、知乎热榜、技术公众号推送）
@@ -54,4 +54,4 @@ url为`https://github.com.cnpmjs.org`的服务链接，并不是`https://github.
 - [ ] 跳转工作导航EasyLink
 
 ## v4.0
-- [] 价格对比（淘宝，京东，当当，拼多多），cps跳转（https://www.gwdang.com/）
+- [ ] 价格对比（淘宝，京东，当当，拼多多），cps跳转（eg.https://www.gwdang.com/）
