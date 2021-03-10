@@ -107,7 +107,7 @@ const config = {
       },
       {
         from: 'diagrams/diagrams.html',
-        to: 'diagrams/diagrams.html',
+        to: 'diagrams/index.html',
         transform: transformHtml
       },
       {
