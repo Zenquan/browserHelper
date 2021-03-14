@@ -47,9 +47,9 @@ import { Octokit } from '@octokit/core';
 import { Mime } from '@jomsou/utils';
 import { ImagePreview, Toast } from 'vant';
 const mime = new Mime();
-const octokit = new Octokit({ auth: ``});
+const octokit = new Octokit({ auth: process.env.github_token});
 import CryptoJS  from 'crypto-js'
-import { Base64, encode, decode } from 'js-base64';
+import { Base64 } from 'js-base64';
 export default {
   data () {
     return {
@@ -179,6 +179,7 @@ export default {
     },
     init () {
       this.getReposData()
+      // console.log('github_token>>>', process.env.github_token);
     }
   },
   computed: {
