@@ -76,10 +76,10 @@ export default {
       window.open(url)
     },
     markdown () {
-      chrome.tabs.create({ url: "/markdown/markdown.html" });
+      chrome.tabs.create({ url: "/markdown/index.html" });
     },
     diagrams () {
-      chrome.tabs.create({ url: "/diagrams/diagrams.html" });
+      chrome.tabs.create({ url: "/diagrams/index.html" });
     },
     init () {
       chrome.tabs.getSelected(null, (tab) => {

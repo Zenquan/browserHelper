@@ -107,3 +107,4 @@ dev.md
 src/popup/App copy.vue
 .DS_Store
 package-lock.json
+.vercel
