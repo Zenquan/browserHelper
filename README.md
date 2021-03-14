@@ -1,7 +1,9 @@
 # browserHelper
 ## 背景
+> 工作中需要使用一些辅助的工具，但是迫于 1、一个工具就装一个插件，最后装了n个；2、有的工具用起来，不大符合自己的习惯、体验；3、插件的扩展性不够好；所以就决定自己使用vue写一个浏览器插件
+
 ## 下载地址
-[下载地址](https://github.com/Zenquan/browserHelper/releases/tag/v1.0.0)
+[下载地址](https://github.com/Zenquan/browserHelper/releases)
 ## v1.0
 ### 公共部分
 - [x] 生成和下载二维码
