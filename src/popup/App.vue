@@ -10,12 +10,12 @@
       <span>二维码</span>
       <span class="qrcode-option">{{isQrcodeShow ? '收起' : '展开' }}</span>
     </div>
-    <div ref="qrcode" v-show="isQrcodeShow"></div>
+    <div ref="qrcode" v-show="isQrcodeShow" class="qrcode"></div>
     <div class="item" @click="getQrCode" v-show="isShowQrcode">去生成二维码</div>
     <div class="item" @click="markdown" v-show="isShowMarkdown">Markdown工具</div>
-    <div class="item setting">
+    <div class="item">
       <span @click="github">github</span>
-      <span @click="setting" class="setting-option">设置</span>
+      <span @click="setting" class="qrcode-option">设置</span>
     </div>
   </div>
 </template>
@@ -116,7 +116,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .popup {
-  min-width: 200px;
+  min-width: 220px;
   min-height: 25px;
   .item {
     padding: 3px 15px;
@@ -131,15 +131,11 @@ export default {
     overflow: hidden;
     .qrcode-option {
       border: 1px dashed #ed3790;
-      margin-left: 100px;
+      margin-left: 110px;
     }
   }
-  .setting {
-    display: flex;
-    justify-content: space-around;
-    .setting-option {
-      border: 1px dashed #ed3790;
-    }
+  .qrcode {
+    margin: 10px;
   }
 }
 </style>
