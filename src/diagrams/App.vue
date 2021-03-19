@@ -6,38 +6,36 @@
       class="diagrams-item">
       <header class="diagrams-h3">
         <p>{{item.path}}</p>
-        <van-uploader :after-read="file => afterRead(file, item.path)" />
+        <!-- <van-uploader :after-read="file => afterRead(file, item.path)" /> -->
       </header>
       <div v-for="(pItem, pIndex) of item.data"
-        :key="`PATH-${pIndex}`"
-        class="diagrams-pitem">
+        :key="`PATH-${pIndex}`">
+        <div class="diagrams-pitem" v-if="pItem.isImg">
           <p class="diagrams-name">{{pItem.name}}</p>
-          <div class="diagrams-p-img" >
+          <div class="diagrams-p-img">
             <van-image
               class="diagrams-img"
               @click="e => preView(e, pItem.img_url)"
               :src="pItem.img_url"
-              v-if="pItem.isImg"
               lazy-load>
               <template v-slot:loading>
                 <van-loading type="spinner" size="20" />
               </template>
               <template v-slot:error>加载失败</template>
             </van-image>
-            <p v-else>该文件不是图片</p>
-          </div>
-          <p class="diagrams-url">{{pItem.img_url}}</p>
-          <van-button type="info" 
-            @click="copyUrl(pItem.img_url)"
-            class="copy-btn">复制url</van-button>
-          <van-button type="info" 
-            @click="copyMdUrl(pItem.img_url)"
-            class="copy-btn"
-            v-if="pItem.isImg">复制md链接</van-button>
-          <van-button type="danger" 
-            @click="deleteFile(pItem.path, pItem.sha)"
-            class="copy-btn"
-            >删除</van-button>
+            </div>
+            <p class="diagrams-url">{{pItem.img_url}}</p>
+            <van-button type="info" 
+              @click="copyUrl(pItem.img_url)"
+              class="copy-btn">复制url</van-button>
+            <van-button type="info" 
+              @click="copyMdUrl(pItem.img_url)"
+              class="copy-btn">复制md链接</van-button>
+            <!-- <van-button type="danger" 
+              @click="deleteFile(pItem.path, pItem.sha)"
+              class="copy-btn"
+              >删除</van-button> -->
+        </div>
       </div>
     </div>
   </div>
