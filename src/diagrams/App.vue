@@ -5,7 +5,7 @@
       :key="`PATHS-${index}`"
       class="diagrams-item">
       <header class="diagrams-h3">
-        <p>{{item.path}}</p>
+        <p v-if="item.path === 'img'">{{item.path}}</p>
         <!-- <van-uploader :after-read="file => afterRead(file, item.path)" /> -->
       </header>
       <div v-for="(pItem, pIndex) of item.data"
