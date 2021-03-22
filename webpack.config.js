@@ -19,6 +19,7 @@ const config = {
     'options/options': './options/options.js',
     'qrcode/qrcode': './qrcode/qrcode.js',
     "markdown/markdown": './markdown/markdown.js',
+    "markdown2/markdown": './markdown2/markdown.js',
     'diagrams/diagrams': './diagrams/diagrams.js'
   },
   output: {
@@ -103,6 +104,11 @@ const config = {
       {
         from: 'markdown/markdown.html',
         to: 'markdown/index.html',
+        transform: transformHtml
+      },
+      {
+        from: 'markdown2/markdown.html',
+        to: 'markdown2/index.html',
         transform: transformHtml
       },
       {

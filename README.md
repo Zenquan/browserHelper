@@ -57,6 +57,7 @@ url为`https://github.com.cnpmjs.org`的服务链接，并不是`https://github.
 - [ ] 所有资讯链接榜整合（微博热榜、知乎热榜、技术公众号推送）
 - [ ] 水印图片，可选择水印
 - [ ] 跳转工作导航EasyLink
+- [ ] 复制粘贴跨端同步工具
 
 ## v4.0
 - [ ] 价格对比（淘宝，京东，当当，拼多多），cps跳转（eg.https://www.gwdang.com/）
