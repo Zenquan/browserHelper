@@ -1,10 +1,5 @@
 <template>
   <div class="popup">
-    <!-- github匹配显示部分 gitHubHelper -->
-    <div v-if="isGitHubHelper">
-      <div class="item" @click="copyGitClone" v-show="isShowGitHubClone">复制快速git clone</div>
-      <div class="item" @click="goGithub1s" v-show="isShowGitHubClone">go github1s</div>
-    </div>
     <!-- 公共部分 点击生成二维码 -->
     <div class="item" @click="qrCode" v-show="isShowQrcode">
       <span>二维码</span>
@@ -31,11 +26,11 @@ export default {
       isShowMarkdown: false,
       isGenerQrcode: false,
       isQrcodeShow: false,
-      isShowDiagrams: false
+      isShowDiagrams: false,
     }
   },
   props: {
-  },
+  }, 
   methods: {
     setting() {
       chrome.tabs.create({ url: "/options/options.html" });
@@ -55,25 +50,6 @@ export default {
     },
     getQrCode () {
       chrome.tabs.create({ url: "/qrcode/qrcode.html" });
-    },
-    getGithubCnpmUrl (currentPageUrl) {
-      const gitHubUrlArr = currentPageUrl.split('/'),
-        urlArr = gitHubUrlArr.slice(0, 5);
-      urlArr.splice(2, 1, 'github.com.cnpmjs.org')
-      return urlArr.join('/');
-    },
-    copyGitClone () {
-      const url = this.getGithubCnpmUrl(this.currentPageUrl),
-        options = `git clone ${url}.git` 
-      this.$copyText(options).then(function (e) {
-          Toast('已复制')
-        }, function (e) {
-          Toast('无法复制')
-        })
-    }, 
-    goGithub1s () {
-      const url = this.currentPageUrl.replace(/github/, 'github1s')
-      window.open(url)
     },
     markdown () {
       chrome.tabs.create({ url: "/markdown/index.html" });
@@ -97,17 +73,10 @@ export default {
         this.isShowMarkdown = res.isShowMarkdown;
         this.isShowDiagrams = res.isShowDiagrams;
       })
+      console.log('user>>>', this.user, this.repo);
     }
   },
   computed: {
-    isGitHubHelper () {
-      console.log('>>>', this.currentPageUrl);
-      return this.currentPageUrl.match(/github.com/)
-    },
-    isShowGitHubClone () {
-      const gitHubUrlArr = this.currentPageUrl.split('/');
-      return gitHubUrlArr.length >= 5;
-    }
   },
   components: {
     Toast
@@ -136,7 +105,9 @@ export default {
     line-height: 20px;
     border-bottom: 1px dashed #e5e5e5;
     overflow: hidden;
+    display: flex;
     .setting-option, .qrcode-option {
+      text-align: center;
       border: 1px dashed #ed3790;
       margin-left: 120px;
     }
