@@ -2,7 +2,7 @@
   "name": "browser-helper",
   "version": "1.0.0",
   "description": "A Vue.js web extension",
-  "author": "LiuRabt",
+  "author": "Zenquan",
   "license": "GPL-3.0",
   "engines": {
     "node": ">=10"
@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@jomsou/utils": "^0.1.2-master.4010d5a",
-    "@octokit/core": "^3.2.5",
+    "@octokit/core": "^3.3.1",
     "@vant/touch-emulator": "^1.2.0",
     "axios": "^0.19.0",
     "echarts": "^4.9.0",

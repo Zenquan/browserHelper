@@ -1,12 +1,10 @@
 <template>
   <div class="mavonEditor">
-    <no-ssr>
-      <mavon-editor 
-        :toolbars="markdownOption" 
-        v-model="handbook"
-        codeStyle="atom-one-dark"
-        @change="change"/>
-    </no-ssr>
+    <mavon-editor 
+      :toolbars="markdownOption" 
+      v-model="handbook"
+      codeStyle="monokai-sublime"
+      @change="change"/>
   </div>
 </template>
 <script>
